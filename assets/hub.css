@@ -26,7 +26,6 @@ body { margin: 0; background: var(--lynn-color-bg); color: var(--lynn-color-text
 .hub-actions { margin: -8px 0 32px; }
 /* Header: same behaviours as the NiCE Designer site (theme.css .site-nav.nav-pre-hero / .nav-download). */
 .lynn-nav { transition: transform 0.3s ease, opacity 0.3s ease, max-height 0.3s ease; }
-.lynn-nav.nav-pre-hero { max-height: 0; opacity: 0; pointer-events: none; overflow: hidden; border-bottom-color: transparent; }
 .hub-nav-pill { text-decoration: none; background: var(--lynn-color-blue); color: #fff; font-size: 14px; font-weight: 700; padding: 8px 18px; border-radius: 100px; transition: background 0.2s, transform 0.15s; white-space: nowrap; }
 .hub-nav-pill:hover { background: #4fa3ff; transform: translateY(-1px); }
 .hub-nav-pill:focus-visible { outline: 2px solid var(--lynn-color-blue); outline-offset: 3px; }
