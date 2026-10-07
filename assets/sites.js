@@ -7,7 +7,8 @@
  *   url      Where it lives
  *   category "Design System" | "Tools" | "Learning" | "Events" | "Community"
  *   tone     blue | electric-blue | indigo | emerald | teal | coral | lynn
- *   icon     A single emoji
+ *   icon     Name of an official Lynn icon: IconBolt, IconBulb, IconCheck, IconClipboard,
+ *            IconEye, IconNiceSmile, IconSpark, IconSparkles, IconArrowRight, IconLock
  *   access   "Public" | "SSO" | "Access code"   (what a visitor will hit)
  *   tags     Short keywords (also searched)
  *   featured true to pin it in the top row
@@ -18,15 +19,23 @@ window.HUB_SITES = [
     tagline: "Design system tools for people and agents",
     desc: "Native tools synced to Storybook, plus a full marketplace. The official way to get and self-audit design system components for agents like Claude Code, built for agentic workflows. Use Storybook components without a GitHub account, and self-audit your patterns.",
     url: "https://erick-nice.github.io/nice-designer-suite-website/index.html",
-    category: "Tools", tone: "indigo", icon: "🎨", access: "Access code",
+    category: "Tools", tone: "indigo", icon: "IconClipboard", access: "Access code",
     tags: ["agents", "marketplace", "audit"], featured: true
+  },
+  {
+    title: "Supercharge Marketplace",
+    tagline: "Community-built skills for Supercharge",
+    desc: "Browse and install community-built skills that ship with Supercharge, the NiCE Designer Suite's agent tooling.",
+    url: "https://erick-nice.github.io/nice-designer-suite-website/marketplace.html",
+    category: "Tools", tone: "indigo", icon: "IconBolt", access: "Access code",
+    tags: ["skills", "marketplace", "agents"], featured: true
   },
   {
     title: "Lyra",
     tagline: "The Lyra design system",
     desc: "The Lyra static web app: components, patterns and guidance for building on the NiCE CXone design language.",
     url: "https://lyra-swa.nice.com/index.html",
-    category: "Design System", tone: "blue", icon: "✦", access: "SSO",
+    category: "Design System", tone: "blue", icon: "IconSpark", access: "SSO",
     tags: ["lyra", "components", "tokens"], featured: true
   },
   {
@@ -34,7 +43,7 @@ window.HUB_SITES = [
     tagline: "Erick Mathews' workspace",
     desc: "The NDLR library, with this workspace's uncategorized items.",
     url: "https://ndlr.netlify.app/#/erick-mathews/uncategorized",
-    category: "Tools", tone: "emerald", icon: "📚", access: "Public",
+    category: "Tools", tone: "emerald", icon: "IconEye", access: "Public",
     tags: ["ndlr", "library"], featured: true
   },
   {
@@ -42,7 +51,7 @@ window.HUB_SITES = [
     tagline: "Make new concepts",
     desc: "Where new UX concepts start. Begin each one with the Lyra Design System so concepts match the product from the first draft.",
     url: "https://claude.ai/design?noredir=1",
-    category: "Tools", tone: "lynn", icon: "✨", access: "SSO",
+    category: "Tools", tone: "lynn", icon: "IconSparkles", access: "SSO",
     tags: ["concepts", "lyra", "prototype"], featured: true
   },
   {
@@ -50,7 +59,7 @@ window.HUB_SITES = [
     tagline: "Dev repo for components",
     desc: "The Storybook for SOL components, used as the developer source of truth. NDS pulls from it so you can use these components without a GitHub account.",
     url: "https://na1.dev.nice-incontact.com/sol/?path=/docs/introduction--docs",
-    category: "Design System", tone: "teal", icon: "🧩", access: "SSO",
+    category: "Design System", tone: "teal", icon: "IconCheck", access: "SSO",
     tags: ["storybook", "sol", "components"]
   },
   {
@@ -58,7 +67,7 @@ window.HUB_SITES = [
     tagline: "NiCE Wings 2026",
     desc: "The Wings 2026 session page, hosted inside the NiCE Designer site.",
     url: "https://erick-nice.github.io/nice-designer-suite-website/wings-2026.html",
-    category: "Events", tone: "coral", icon: "🪽", access: "Access code",
+    category: "Events", tone: "coral", icon: "IconBolt", access: "Access code",
     tags: ["wings", "session", "2026"]
   },
   {
@@ -66,7 +75,7 @@ window.HUB_SITES = [
     tagline: "Everything you need",
     desc: "Install guide, skills reference, use cases, scoring and FAQ for the NiCE Designer Suite.",
     url: "https://erick-nice.github.io/nice-designer-suite-website/install-guide.html",
-    category: "Learning", tone: "teal", icon: "📖", access: "Access code",
+    category: "Learning", tone: "teal", icon: "IconBulb", access: "Access code",
     tags: ["docs", "install", "faq"]
   },
   {
@@ -74,7 +83,7 @@ window.HUB_SITES = [
     tagline: "The UX team home",
     desc: "The UX-Global SharePoint site: team news, files and resources.",
     url: "https://niceonlinena.sharepoint.com/sites/UX-Global/SitePages/Home.aspx",
-    category: "Community", tone: "electric-blue", icon: "🌐", access: "SSO",
+    category: "Community", tone: "electric-blue", icon: "IconNiceSmile", access: "SSO",
     tags: ["sharepoint", "team", "ux-global"]
   }
 ];
