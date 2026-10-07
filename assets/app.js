@@ -7,7 +7,7 @@ import {
 } from '../vendor/lynn-ui/dist/index.js';
 
 const ICONS = { IconBolt, IconBulb, IconCheck, IconClipboard, IconEye, IconNiceSmile, IconSpark, IconSparkles, IconArrowRight, IconLock };
-const ACCESS_STATUS = { Public: 'good', SSO: 'active', 'Access code': 'beta' };
+const ACCESS_STATUS = { Public: 'good', SSO: 'active', 'Access code': 'beta', Password: 'beta' };
 const THEME_KEY = 'ux-hub-theme';
 const sites = window.HUB_SITES || [];
 
@@ -65,7 +65,7 @@ function Directory() {
   return h('section', { className: 'hub-section', id: 'sites' },
     h('p', { className: 'hub-label' }, 'Directory'),
     h('h2', { className: 'hub-title' }, 'All ', h('span', null, 'UX sites')),
-    h('p', { className: 'hub-desc' }, 'Open a card to go to the site. The badge shows what you will meet there: public, SSO or an access code.'),
+    h('p', { className: 'hub-desc' }, 'Open a card to go to the site. The badge shows what you will meet there: public, SSO, a password or an access code.'),
     h('div', { className: 'hub-toolbar' },
       h(Tabs, { variant: 'elevated', ariaLabel: 'Filter by category', value: cat, onChange: setCat, options: cats.map((c) => ({ value: c, label: c })) }),
       h('div', { className: 'hub-search' }, h(SearchInput, { value: q, onChange: setQ, placeholder: 'Search sites', ariaLabel: 'Search sites' })),
@@ -116,9 +116,9 @@ function App() {
         ))),
     h(Footer, {
       columns: [
-        { title: 'Design', links: [{ label: 'Lyra', href: 'https://lyra-swa.nice.com/index.html' }, { label: 'SOL Storybook', href: 'https://na1.dev.nice-incontact.com/sol/?path=/docs/introduction--docs' }, { label: 'Claude Design', href: 'https://claude.ai/design?noredir=1' }] },
+        { title: 'Design', links: [{ label: 'Lyra', href: 'https://lyra-swa.nice.com/index.html' }, { label: 'Lyra & SOL Storybook', href: 'https://na1.dev.nice-incontact.com/sol/?path=/docs/introduction--docs' }, { label: 'Claude Design', href: 'https://claude.ai/design?noredir=1' }] },
         { title: 'Tools', links: [{ label: 'NiCE Designer Suite', href: 'https://erick-nice.github.io/nice-designer-suite-website/index.html' }, { label: 'Supercharge Marketplace', href: 'https://erick-nice.github.io/nice-designer-suite-website/marketplace.html' }, { label: 'NDLR', href: 'https://ndlr.netlify.app/#/erick-mathews/uncategorized' }] },
-        { title: 'Team', links: [{ label: 'UX Global', href: 'https://niceonlinena.sharepoint.com/sites/UX-Global/SitePages/Home.aspx' }, { label: 'Wings 2026', href: 'https://erick-nice.github.io/nice-designer-suite-website/wings-2026.html' }] },
+        { title: 'Team', links: [{ label: 'UX Global', href: 'https://niceonlinena.sharepoint.com/sites/UX-Global/SitePages/Home.aspx' }, { label: 'UX Team Trainings', href: 'https://niceonlinena.sharepoint.com/sites/UX-Global/SitePages/UX-Team-Trainings.aspx' }, { label: 'UX Jira Board', href: 'https://nice-ce-cxone-prod.atlassian.net/jira/software/c/projects/CXUX/boards/4130' }, { label: 'Legacy Docs', href: 'https://nice-ce-cxone-prod.atlassian.net/wiki/spaces/EUIUX/overview' }, { label: 'Wings 2026', href: 'https://erick-nice.github.io/nice-designer-suite-website/wings-2026.html' }] },
       ],
     }));
 }

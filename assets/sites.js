@@ -41,9 +41,9 @@ window.HUB_SITES = [
   {
     title: "NDLR",
     tagline: "Erick Mathews' workspace",
-    desc: "The NDLR library, with this workspace's uncategorized items.",
+    desc: "The NDLR library, with this workspace's uncategorized items. Requires a password.",
     url: "https://ndlr.netlify.app/#/erick-mathews/uncategorized",
-    category: "Tools", tone: "emerald", icon: "IconEye", access: "Public",
+    category: "Tools", tone: "emerald", icon: "IconEye", access: "Password",
     tags: ["ndlr", "library"], featured: true
   },
   {
@@ -55,12 +55,12 @@ window.HUB_SITES = [
     tags: ["concepts", "lyra", "prototype"], featured: true
   },
   {
-    title: "SOL Storybook",
+    title: "Lyra & SOL Storybook",
     tagline: "Dev repo for components",
-    desc: "The Storybook for SOL components, used as the developer source of truth. NDS pulls from it so you can use these components without a GitHub account.",
+    desc: "One Storybook with both Lyra and SOL components, used as the developer source of truth. NDS pulls from it so you can use these components without a GitHub account.",
     url: "https://na1.dev.nice-incontact.com/sol/?path=/docs/introduction--docs",
     category: "Design System", tone: "teal", icon: "IconCheck", access: "SSO",
-    tags: ["storybook", "sol", "components"]
+    tags: ["storybook", "lyra", "sol"]
   },
   {
     title: "Wings 2026 Session",
@@ -77,6 +77,30 @@ window.HUB_SITES = [
     url: "https://erick-nice.github.io/nice-designer-suite-website/install-guide.html",
     category: "Learning", tone: "teal", icon: "IconBulb", access: "Access code",
     tags: ["docs", "install", "faq"]
+  },
+  {
+    title: "UX Team Trainings",
+    tagline: "Recorded trainings for the team",
+    desc: "Recordings of UX team trainings on the UX-Global SharePoint site. Catch up on a session or revisit one.",
+    url: "https://niceonlinena.sharepoint.com/sites/UX-Global/SitePages/UX-Team-Trainings.aspx",
+    category: "Learning", tone: "emerald", icon: "IconNiceSmile", access: "SSO",
+    tags: ["training", "recordings", "sharepoint"]
+  },
+  {
+    title: "Legacy Design Documentation",
+    tagline: "EUIUX Confluence space",
+    desc: "The legacy design documentation in Confluence. Use it for older guidance that has not moved to Lyra or SOL yet.",
+    url: "https://nice-ce-cxone-prod.atlassian.net/wiki/spaces/EUIUX/overview",
+    category: "Learning", tone: "electric-blue", icon: "IconBulb", access: "SSO",
+    tags: ["legacy", "confluence", "docs"]
+  },
+  {
+    title: "UX Jira Board",
+    tagline: "CXUX project board",
+    desc: "The UX team's Jira board for the CXUX project: requests, work in progress and status.",
+    url: "https://nice-ce-cxone-prod.atlassian.net/jira/software/c/projects/CXUX/boards/4130",
+    category: "Community", tone: "coral", icon: "IconClipboard", access: "SSO",
+    tags: ["jira", "cxux", "board"]
   },
   {
     title: "UX Global (SharePoint)",
