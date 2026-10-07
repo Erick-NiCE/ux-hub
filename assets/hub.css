@@ -1,0 +1,38 @@
+/* Page layout for the UX Hub. All colour, type, radius and spacing come from Lynn tokens. */
+html { scroll-behavior: smooth; }
+body { margin: 0; background: var(--lynn-color-bg); color: var(--lynn-color-text); font-family: var(--lynn-font-family); }
+a { color: inherit; }
+.hub-section { max-width: 1160px; margin: 0 auto; padding: 64px 32px; }
+.hub-label { font-size: 11px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; color: var(--lynn-color-blue); margin: 0 0 12px; }
+.hub-title { font-size: clamp(26px, 4vw, 40px); font-weight: 800; letter-spacing: -0.8px; margin: 0 0 12px; }
+.hub-title span { background: linear-gradient(90deg, var(--lynn-color-blue), var(--lynn-color-lynn)); -webkit-background-clip: text; background-clip: text; color: transparent; }
+.hub-desc { font-size: 15px; line-height: 1.7; color: var(--lynn-color-text-secondary); max-width: 640px; margin: 0 0 32px; }
+.hub-nav-links { display: flex; gap: 20px; margin-left: auto; margin-right: 8px; }
+.hub-nav-links a { font-size: 14px; font-weight: 500; text-decoration: none; color: var(--lynn-color-text-secondary); }
+.hub-nav-links a:hover { color: var(--lynn-color-text); }
+.lynn-hero { min-height: 62vh; }
+.lynn-hero-title .grad { background: linear-gradient(90deg, #3694fc, #b98fff); -webkit-background-clip: text; background-clip: text; color: transparent; }
+.hub-toolbar { display: flex; flex-wrap: wrap; gap: 16px; align-items: center; justify-content: space-between; margin-bottom: 28px; }
+.hub-toolbar .lynn-search-input { max-width: 320px; }
+.hub-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 20px; }
+.hub-card { display: flex; flex-direction: column; text-decoration: none; color: inherit; height: 100%; }
+.hub-card .lynn-feature-card-body { flex: 1; font-size: 14px; line-height: 1.65; color: var(--lynn-color-text-secondary); }
+.hub-card .lynn-feature-card-footer { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 16px 28px 22px; }
+.hub-card .lynn-feature-card-tags { display: flex; flex-wrap: wrap; gap: 6px; }
+.hub-open { font-size: 13px; font-weight: 600; color: var(--lynn-color-blue); white-space: nowrap; }
+.hub-card:hover .hub-open { color: var(--lynn-color-text); }
+.hub-card:focus-visible { outline: 2px solid var(--lynn-color-blue); outline-offset: 3px; }
+.hub-empty { display: none; padding: 48px 0; text-align: center; color: var(--lynn-color-text-secondary); }
+.hub-add { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; margin-top: 8px; }
+.hub-add .lynn-icon-card { margin: 0; }
+.hub-code { font-family: var(--lynn-font-family-mono); font-size: 12px; padding: 2px 6px; border-radius: 6px; background: var(--lynn-color-surface); border: 1px solid var(--lynn-color-border); }
+.lynn-footer { padding: 40px 32px; text-align: center; font-size: 13px; color: var(--lynn-color-text-secondary); border-top: 1px solid var(--lynn-color-border); background: var(--lynn-color-surface); }
+@media (max-width: 720px) { .hub-section { padding: 48px 20px; } .hub-nav-links { display: none; } .hub-grid { grid-template-columns: 1fr; } .lynn-nav { padding: 0 16px; } }
+/* overflow-x:hidden on .lynn-root would break the sticky nav; clip does not. */
+.lynn-root { overflow: visible; overflow-x: clip; }
+.lynn-tabs { --lynn-tabs-accent: var(--lynn-color-blue); --lynn-tabs-accent-ink: #fff; }
+.lynn-tabs-elevated .lynn-tabs-segment { padding: 8px 14px; font-size: 13px; font-weight: 600; }
+.lynn-theme-toggle .lynn-tabs-segment { padding: 6px 10px; font-size: 14px; }
+.lynn-tabs-elevated .lynn-tabs-segment-active { color: var(--lynn-color-blue); }
+.hub-toolbar .lynn-tabs { flex-wrap: wrap; }
+[data-lynn-theme=light] .lynn-badge { color: color-mix(in srgb, var(--lynn-badge-fg) 55%, #000); }

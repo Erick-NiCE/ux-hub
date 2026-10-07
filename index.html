@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en" data-lynn-theme="lynn">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>NiCE UX Hub</title>
+  <meta name="description" content="One place for every site built by the NiCE UX team." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="assets/lynn-ui.css" />
+  <link rel="stylesheet" href="assets/hub.css" />
+  <script>try{var t=localStorage.getItem('ux-hub-theme');if(t)document.documentElement.setAttribute('data-lynn-theme',t)}catch(e){}</script>
+</head>
+<body>
+  <div class="lynn-root">
+    <header class="lynn-nav">
+      <a class="lynn-nav-logo" href="#top" aria-label="NiCE UX Hub home">
+        <span class="lynn-nav-logo-nice">NiCE</span>&nbsp;<span class="lynn-nav-logo-designer">UX Hub</span>
+      </a>
+      <nav class="hub-nav-links" aria-label="Sections">
+        <a href="#sites">Sites</a><a href="#add">Add a site</a>
+      </nav>
+      <div class="lynn-nav-cta">
+        <div class="lynn-tabs lynn-tabs-elevated lynn-theme-toggle" id="hub-theme" role="group" aria-label="Theme">
+          <button type="button" class="lynn-tabs-segment" data-theme="lynn" aria-label="Lynn theme" title="Lynn">✦</button>
+          <button type="button" class="lynn-tabs-segment" data-theme="light" aria-label="Light theme" title="Light">☀</button>
+          <button type="button" class="lynn-tabs-segment" data-theme="dark" aria-label="Dark theme" title="Dark">☾</button>
+        </div>
+      </div>
+    </header>
+
+    <main id="top">
+      <section class="lynn-hero">
+        <div class="lynn-hero-bg">
+          <div class="lynn-hero-radial"></div>
+          <div class="lynn-hero-orb lynn-hero-orb-1"></div>
+          <div class="lynn-hero-orb lynn-hero-orb-2"></div>
+          <div class="lynn-hero-orb lynn-hero-orb-3"></div>
+        </div>
+        <div class="lynn-hero-content">
+          <p class="lynn-hero-eyebrow">NiCE UX team</p>
+          <h1 class="lynn-hero-title">Every UX site, <span class="grad">one hub</span></h1>
+          <p class="lynn-hero-subtitle">Design systems, tools, learning and events from the UX team, together in one place.</p>
+          <div class="lynn-hero-actions">
+            <a class="lynn-btn lynn-btn-primary" href="#sites">Browse sites</a>
+            <a class="lynn-btn lynn-btn-secondary" href="#add">Add a site</a>
+          </div>
+        </div>
+      </section>
+
+      <section class="hub-section" id="sites">
+        <p class="hub-label">Directory</p>
+        <h2 class="hub-title">All <span>UX sites</span></h2>
+        <p class="hub-desc">Open a card to go to the site. A badge shows what you will meet when you get there: public, SSO or an access code.</p>
+        <div class="hub-toolbar">
+          <div class="lynn-tabs lynn-tabs-elevated" id="hub-tabs" role="group" aria-label="Filter by category"></div>
+          <div class="lynn-search-input">
+            <span class="lynn-search-input-icon" aria-hidden="true">⌕</span>
+            <input id="hub-search" class="lynn-search-input-field" type="search" placeholder="Search sites" aria-label="Search sites" />
+          </div>
+        </div>
+        <p id="hub-count" class="hub-desc" style="margin-bottom:16px" aria-live="polite"></p>
+        <div class="hub-grid" id="hub-grid"></div>
+        <p class="hub-empty" id="hub-empty">No sites match. Try another search or category.</p>
+      </section>
+
+      <section class="hub-section" id="add" style="border-top:1px solid var(--lynn-color-border)">
+        <p class="hub-label">Contribute</p>
+        <h2 class="hub-title">Built something? <span>Add it</span></h2>
+        <p class="hub-desc">New sites are one entry in <span class="hub-code">assets/sites.js</span>. Open a pull request on the repo and it appears here once merged.</p>
+        <div class="hub-add">
+          <div class="lynn-icon-card lynn-icon-card-vertical"><span class="lynn-icon-card-icon" aria-hidden="true">1</span><div class="lynn-icon-card-main"><div class="lynn-icon-card-title">Add an entry</div><div class="lynn-icon-card-desc">Copy an existing object in <span class="hub-code">sites.js</span> and fill in title, url, category and tone.</div></div></div>
+          <div class="lynn-icon-card lynn-icon-card-vertical"><span class="lynn-icon-card-icon" aria-hidden="true">2</span><div class="lynn-icon-card-main"><div class="lynn-icon-card-title">Open a PR</div><div class="lynn-icon-card-desc">Anyone on the team can propose a site. A reviewer merges it.</div></div></div>
+          <div class="lynn-icon-card lynn-icon-card-vertical"><span class="lynn-icon-card-icon" aria-hidden="true">3</span><div class="lynn-icon-card-main"><div class="lynn-icon-card-title">It goes live</div><div class="lynn-icon-card-desc">GitHub Pages redeploys on merge. No build step.</div></div></div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="lynn-footer">NiCE UX Hub · Built with Lynn UI</footer>
+  </div>
+  <script src="assets/sites.js"></script>
+  <script src="assets/hub.js"></script>
+</body>
+</html>
