@@ -14,12 +14,12 @@
  */
 window.HUB_SITES = [
   {
-    title: "NiCE Designer Suite",
-    tagline: "Design system compliance hub",
-    desc: "Install guides, Claude skills, scoring, the compliance dashboard, roadmap and release notes for the Figma plugin, Chrome extension and MCP.",
+    title: "NiCE Designer Suite (NDS)",
+    tagline: "Design system tools for people and agents",
+    desc: "Native tools synced to Storybook, plus a full marketplace. The official way to get and self-audit design system components for agents like Claude Code, built for agentic workflows. Use Storybook components without a GitHub account, and self-audit your patterns.",
     url: "https://erick-nice.github.io/nice-designer-suite-website/index.html",
     category: "Tools", tone: "indigo", icon: "🎨", access: "Access code",
-    tags: ["figma", "chrome", "mcp", "compliance"], featured: true
+    tags: ["agents", "marketplace", "audit"], featured: true
   },
   {
     title: "Lyra",
@@ -36,6 +36,22 @@ window.HUB_SITES = [
     url: "https://ndlr.netlify.app/#/erick-mathews/uncategorized",
     category: "Tools", tone: "emerald", icon: "📚", access: "Public",
     tags: ["ndlr", "library"], featured: true
+  },
+  {
+    title: "Claude Design",
+    tagline: "Make new concepts",
+    desc: "Where new UX concepts start. Begin each one with the Lyra Design System so concepts match the product from the first draft.",
+    url: "https://claude.ai/design?noredir=1",
+    category: "Tools", tone: "lynn", icon: "✨", access: "SSO",
+    tags: ["concepts", "lyra", "prototype"], featured: true
+  },
+  {
+    title: "SOL Storybook",
+    tagline: "Dev repo for components",
+    desc: "The Storybook for SOL components, used as the developer source of truth. NDS pulls from it so you can use these components without a GitHub account.",
+    url: "https://na1.dev.nice-incontact.com/sol/?path=/docs/introduction--docs",
+    category: "Design System", tone: "teal", icon: "🧩", access: "SSO",
+    tags: ["storybook", "sol", "components"]
   },
   {
     title: "Wings 2026 Session",
