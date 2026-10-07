@@ -23,3 +23,4 @@ body { margin: 0; background: var(--lynn-color-bg); color: var(--lynn-color-text
 .hub-add { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px; }
 .hub-code { font-family: var(--lynn-font-family-mono); font-size: 12px; padding: 2px 6px; border-radius: 6px; background: var(--lynn-color-surface); border: 1px solid var(--lynn-color-border); }
 @media (max-width: 720px) { .hub-section { padding: 48px 20px; } .hub-grid { grid-template-columns: 1fr; } }
+.hub-actions { margin: -8px 0 32px; }

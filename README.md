@@ -3,7 +3,7 @@
 One page linking every site built by the NiCE UX team. Built with the Lynn UI React components (`vendor/lynn-ui`), so it uses the same native components as the NiCE Designer site.
 
 ## Add a site
-Edit `assets/sites.js`, copy an entry, and open a pull request. GitHub Pages redeploys on merge. No build step.
+Edit `assets/sites.js`, copy an entry, and open a pull request. No GitHub account? Send a .zip of your site to Erick Mathews on Teams and he will help you get it live. GitHub Pages redeploys on merge. No build step.
 
 ## Run locally
 ```bash
