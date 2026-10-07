@@ -1,7 +1,7 @@
 import { createElement as h, useEffect, useMemo, useState } from 'react';
 import { createRoot } from 'react-dom/client';
 import {
-  Badge, Button, CtaBanner, FeatureCard, Footer, Hero, IconArrowRight, IconBolt, IconBulb, IconCheck,
+  Badge, Button, DocRail, CtaBanner, FeatureCard, Footer, Hero, IconArrowRight, IconBolt, IconBulb, IconCheck,
   IconClipboard, IconEye, IconLock, IconNiceSmile, IconSpark, IconSparkles, IconCard, Nav, SearchInput,
   Tabs, ThemeProvider, ThemeToggle, useLynnTheme,
 } from '../vendor/lynn-ui/dist/index.js';
@@ -76,13 +76,56 @@ function Directory() {
       : h('p', { className: 'hub-empty' }, 'No sites match. Try another search or category.'));
 }
 
+const RAIL_KEY = 'ux-hub-rail-collapsed';
+const RAIL_GROUPS = [{
+  label: 'UX Hub',
+  items: [
+    { id: 'top', label: 'Overview' },
+    { id: 'sites', label: 'All sites' },
+    { id: 'concept', label: 'New concept' },
+    { id: 'add', label: 'Add a site' },
+  ],
+}];
+
 function App() {
+  /* Same header behaviour as the NiCE Designer site: the nav stays out of the way
+     until the hero has scrolled away, then hides on scroll down and returns on
+     scroll up (Nav's own autoHide). */
+  const [preHero, setPreHero] = useState(true);
+  useEffect(() => {
+    const hero = document.querySelector('.lynn-hero');
+    if (!hero) { setPreHero(false); return undefined; }
+    const check = () => setPreHero(hero.getBoundingClientRect().bottom > 0);
+    check();
+    window.addEventListener('scroll', check, { passive: true });
+    window.addEventListener('resize', check);
+    return () => { window.removeEventListener('scroll', check); window.removeEventListener('resize', check); };
+  }, []);
+  const [railCollapsed, setRailCollapsed] = useState(() => {
+    try {
+      const saved = localStorage.getItem(RAIL_KEY);
+      if (saved != null) return saved === '1';
+    } catch (e) {}
+    return window.innerWidth < 1440; // the 220px rail would overlap the content on narrow screens
+  });
+  const setRail = (v) => {
+    setRailCollapsed(v);
+    try { localStorage.setItem(RAIL_KEY, v ? '1' : '0'); } catch (e) {}
+  };
   return h(ThemeProvider, { defaultTheme: readTheme(), className: 'hub-root' },
     h(ThemeBridge),
     h(Nav, {
       logo: h('span', null, h('span', { className: 'lynn-nav-logo-nice' }, 'NiCE'), h('span', { className: 'lynn-nav-logo-designer' }, ' UX Hub')),
       logoHref: '#top',
-      cta: h(ThemeToggle, { showLabels: false }),
+      className: preHero ? 'nav-pre-hero' : undefined,
+      cta: [
+        h(ThemeToggle, { key: 'theme', showLabels: false }),
+        h('a', { key: 'add', className: 'hub-nav-pill', href: '#add' }, 'Add a site'),
+      ],
+    }),
+    h(DocRail, {
+      mode: 'sections', groups: RAIL_GROUPS, label: 'UX Hub', searchable: true, searchPlaceholder: 'Search sections…',
+      emptyText: 'No matching sections', collapsed: railCollapsed, onToggle: setRail,
     }),
     h('main', { id: 'top' },
       h(Hero, {
@@ -115,11 +158,8 @@ function App() {
           h(IconCard, { layout: 'vertical', icon: h(IconCheck, { size: 32 }), title: 'It goes live', description: 'GitHub Pages redeploys on merge. No build step.' }),
         ))),
     h(Footer, {
-      columns: [
-        { title: 'Design', links: [{ label: 'Lyra', href: 'https://lyra-swa.nice.com/index.html' }, { label: 'Lyra & SOL Storybook', href: 'https://na1.dev.nice-incontact.com/sol/?path=/docs/introduction--docs' }, { label: 'Claude Design', href: 'https://claude.ai/design?noredir=1' }] },
-        { title: 'Tools', links: [{ label: 'NiCE Designer Suite', href: 'https://erick-nice.github.io/nice-designer-suite-website/index.html' }, { label: 'Supercharge Marketplace', href: 'https://erick-nice.github.io/nice-designer-suite-website/marketplace.html' }, { label: 'NDLR', href: 'https://ndlr.netlify.app/#/erick-mathews/uncategorized' }] },
-        { title: 'Team', links: [{ label: 'UX Global', href: 'https://niceonlinena.sharepoint.com/sites/UX-Global/SitePages/Home.aspx' }, { label: 'UX Team Trainings', href: 'https://niceonlinena.sharepoint.com/sites/UX-Global/SitePages/UX-Team-Trainings.aspx' }, { label: 'UX Jira Board', href: 'https://nice-ce-cxone-prod.atlassian.net/jira/software/c/projects/CXUX/boards/4130' }, { label: 'Legacy Docs', href: 'https://nice-ce-cxone-prod.atlassian.net/wiki/spaces/EUIUX/overview' }, { label: 'Wings 2026', href: 'https://erick-nice.github.io/nice-designer-suite-website/wings-2026.html' }] },
-      ],
+      logo: h('span', null, h('span', { className: 'lynn-footer-logo-nice' }, 'NiCE'), h('span', { className: 'lynn-footer-logo-designer' }, ' UX Hub')),
+      columns: [],
     }));
 }
 
