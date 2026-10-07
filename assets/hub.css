@@ -42,3 +42,4 @@ body { margin: 0; background: var(--lynn-color-bg); color: var(--lynn-color-text
 .lynn-hero .hub-grad { background: linear-gradient(90deg, #8ec5ff, #d9c2ff); -webkit-background-clip: text; background-clip: text; color: transparent; }
 .hub-actions { margin: 0 0 28px; }
 .hub-desc + .hub-desc { margin-top: -16px; }
+.hub-card-actions { display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap; }

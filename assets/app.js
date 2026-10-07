@@ -47,7 +47,9 @@ function SiteCard({ site }) {
       className: 'hub-card',
     },
       h('p', { className: 'hub-card-desc' }, site.desc),
-      h('span', { className: 'hub-open' }, 'Open site', h(IconArrowRight, { size: 14 })),
+      h('div', { className: 'hub-card-actions' },
+        h('span', { className: 'hub-open' }, 'Open site', h(IconArrowRight, { size: 14 })),
+        site.lynn ? h(Badge, { tone: 'lynn', bordered: true, icon: h(IconSparkles, { size: 10 }) }, 'Built with Lynn') : null),
     ));
 }
 
@@ -59,7 +61,7 @@ function Directory() {
     const needle = q.trim().toLowerCase();
     return sites
       .filter((s) => (cat === 'All' || s.category === cat) &&
-        (!needle || [s.title, s.tagline, s.desc, s.category, ...(s.tags || [])].join(' ').toLowerCase().includes(needle)))
+        (!needle || [s.title, s.tagline, s.desc, s.category, s.lynn ? 'lynn built with lynn' : '', ...(s.tags || [])].join(' ').toLowerCase().includes(needle)))
       .sort((a, b) => (b.featured ? 1 : 0) - (a.featured ? 1 : 0));
   }, [q, cat]);
   return h('section', { className: 'hub-section', id: 'sites' },

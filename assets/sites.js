@@ -12,6 +12,7 @@
  *   access   "Public" | "SSO" | "Access code"   (what a visitor will hit)
  *   tags     Short keywords (also searched)
  *   featured true to pin it in the top row
+ *   lynn     true if the site is built with Lynn UI (shows a "Built with Lynn" tag)
  */
 window.HUB_SITES = [
   {
@@ -20,7 +21,8 @@ window.HUB_SITES = [
     desc: "Native tools synced to Storybook, plus a full marketplace. The official way to get and self-audit design system components for agents like Claude Code, built for agentic workflows. Use Storybook components without a GitHub account, and self-audit your patterns.",
     url: "https://erick-nice.github.io/nice-designer-suite-website/index.html",
     category: "Tools", tone: "indigo", icon: "IconClipboard", access: "Access code",
-    tags: ["agents", "marketplace", "audit"], featured: true
+    tags: ["agents", "marketplace", "audit"], featured: true,
+    lynn: true
   },
   {
     title: "Supercharge Marketplace",
@@ -28,7 +30,8 @@ window.HUB_SITES = [
     desc: "Browse and install community-built skills that ship with Supercharge, the NiCE Designer Suite's agent tooling.",
     url: "https://erick-nice.github.io/nice-designer-suite-website/marketplace.html",
     category: "Tools", tone: "indigo", icon: "IconBolt", access: "Access code",
-    tags: ["skills", "marketplace", "agents"], featured: true
+    tags: ["skills", "marketplace", "agents"], featured: true,
+    lynn: true
   },
   {
     title: "Lyra",
@@ -44,7 +47,8 @@ window.HUB_SITES = [
     desc: "The NDLR library, with this workspace's uncategorized items. Requires a password.",
     url: "https://ndlr.netlify.app/#/erick-mathews/uncategorized",
     category: "Tools", tone: "emerald", icon: "IconEye", access: "Password",
-    tags: ["ndlr", "library"], featured: true
+    tags: ["ndlr", "library"], featured: true,
+    lynn: true
   },
   {
     title: "Claude Design",
@@ -68,7 +72,8 @@ window.HUB_SITES = [
     desc: "The Wings 2026 session page, hosted inside the NiCE Designer site.",
     url: "https://erick-nice.github.io/nice-designer-suite-website/wings-2026.html",
     category: "Events", tone: "coral", icon: "IconBolt", access: "Access code",
-    tags: ["wings", "session", "2026"]
+    tags: ["wings", "session", "2026"],
+    lynn: true
   },
   {
     title: "Designer Documentation",
@@ -76,7 +81,8 @@ window.HUB_SITES = [
     desc: "Install guide, skills reference, use cases, scoring and FAQ for the NiCE Designer Suite.",
     url: "https://erick-nice.github.io/nice-designer-suite-website/install-guide.html",
     category: "Learning", tone: "teal", icon: "IconBulb", access: "Access code",
-    tags: ["docs", "install", "faq"]
+    tags: ["docs", "install", "faq"],
+    lynn: true
   },
   {
     title: "UX Team Trainings",
