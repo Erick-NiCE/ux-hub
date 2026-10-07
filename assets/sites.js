@@ -8,7 +8,7 @@
  *   category "Design System" | "Tools" | "Learning" | "Events" | "Community"
  *   tone     blue | electric-blue | indigo | emerald | teal | coral | lynn
  *   icon     Name of an official Lynn icon: IconBolt, IconBulb, IconCheck, IconClipboard,
- *            IconEye, IconNiceSmile, IconSpark, IconSparkles, IconArrowRight, IconLock
+ *            IconClaude (Claude mark), IconEye, IconNiceSmile, IconSpark, IconSparkles, IconArrowRight, IconLock
  *   access   "Public" | "SSO" | "Access code"   (what a visitor will hit)
  *   tags     Short keywords (also searched)
  *   featured true to pin it in the top row
@@ -29,9 +29,17 @@ window.HUB_SITES = [
     tagline: "Community-built skills for Supercharge",
     desc: "Browse and install community-built skills that ship with Supercharge, the NiCE Designer Suite's agent tooling.",
     url: "https://erick-nice.github.io/nice-designer-suite-website/marketplace.html",
-    category: "Tools", tone: "indigo", icon: "IconBolt", access: "Access code",
+    category: "Tools", tone: "indigo", icon: "IconClaude", access: "Access code",
     tags: ["skills", "marketplace", "agents"], featured: true,
     lynn: true
+  },
+  {
+    title: "Lynn",
+    tagline: "Component library for internal sites and tools",
+    desc: "Lynn is a component library used only for internal sites and tools, like this hub and the NiCE Designer site. It is not used for product UI, which is built on Lyra and SOL. Browse its components, tokens and themes.",
+    url: "https://erick-nice.github.io/nice-designer-suite-website/lynn.html",
+    category: "Design System", tone: "lynn", icon: "IconSparkles", access: "Access code",
+    tags: ["components", "tokens", "internal"], featured: true, lynn: true
   },
   {
     title: "Lyra",
@@ -55,7 +63,7 @@ window.HUB_SITES = [
     tagline: "Make new concepts",
     desc: "Where new UX concepts start. Begin each one with the Lyra Design System so concepts match the product from the first draft.",
     url: "https://claude.ai/design?noredir=1",
-    category: "Tools", tone: "lynn", icon: "IconSparkles", access: "SSO",
+    category: "Tools", tone: "lynn", icon: "IconClaude", access: "SSO",
     tags: ["concepts", "lyra", "prototype"], featured: true
   },
   {

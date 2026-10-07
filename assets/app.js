@@ -6,10 +6,25 @@ import {
   Tabs, ThemeProvider, ThemeToggle, useLynnTheme,
 } from '../vendor/lynn-ui/dist/index.js';
 
-const ICONS = { IconBolt, IconBulb, IconCheck, IconClipboard, IconEye, IconNiceSmile, IconSpark, IconSparkles, IconArrowRight, IconLock };
+/* The Claude starburst, the same mark the NiCE Designer plugin uses for Supercharge (src/ui/icons.tsx IconClaude).
+   lynn-ui has no Claude/Anthropic icon, so it lives here. Draws in currentColor. */
+const CLAUDE_RAYS = [[50, 4], [66, 6], [84, 12], [94, 30], [96, 50], [93, 68], [80, 88], [60, 95], [43, 97], [25, 92], [10, 78], [4, 56], [9, 35], [22, 10]];
+function IconClaude({ size = 16 }) {
+  return h('svg', { width: size, height: size, viewBox: '0 0 100 100', fill: 'none', xmlns: 'http://www.w3.org/2000/svg', 'aria-hidden': 'true' },
+    h('g', { stroke: 'currentColor', strokeWidth: 9, strokeLinecap: 'round', strokeLinejoin: 'round' },
+      CLAUDE_RAYS.map(([x, y]) => h('line', { key: x + ',' + y, x1: 50, y1: 50, x2: x, y2: y }))),
+    h('circle', { cx: 50, cy: 50, r: 10, fill: 'currentColor' }));
+}
+
+const ICONS = { IconClaude,  IconBolt, IconBulb, IconCheck, IconClipboard, IconEye, IconNiceSmile, IconSpark, IconSparkles, IconArrowRight, IconLock };
 const ACCESS_STATUS = { Public: 'good', SSO: 'active', 'Access code': 'beta', Password: 'beta' };
 const THEME_KEY = 'ux-hub-theme';
 const sites = window.HUB_SITES || [];
+/* A tag only earns a chip if more than one site carries it; one-offs (e.g. "ndlr" on NDLR) just repeat the title.
+   They stay searchable. */
+const TAG_COUNTS = {};
+sites.forEach((s) => (s.tags || []).forEach((t) => { TAG_COUNTS[t] = (TAG_COUNTS[t] || 0) + 1; }));
+const sharedTags = (s) => (s.tags || []).filter((t) => TAG_COUNTS[t] > 1);
 
 function readTheme() {
   try { const t = localStorage.getItem(THEME_KEY); if (t === 'lynn' || t === 'light' || t === 'dark') return t; } catch (e) {}
@@ -41,7 +56,7 @@ function SiteCard({ site }) {
       accentColor: c,
       name: site.title,
       tagline: site.tagline,
-      tags: site.tags || [],
+      tags: sharedTags(site),
       status: h('span', { className: 'hub-status' }, site.access !== 'Public' ? h(IconLock, { size: 11 }) : null, site.access),
       statusVariant: ACCESS_STATUS[site.access] || 'active',
       className: 'hub-card',
@@ -105,7 +120,7 @@ function App() {
           variant: 'gradient',
           text: 'Starting a new concept? Open Claude Design and begin with the Lyra Design System.',
           ctaLabel: 'Open Claude Design', ctaHref: 'https://claude.ai/design?noredir=1',
-          ctaTarget: '_blank', ctaRel: 'noopener noreferrer', ctaIcon: h(IconSparkles, { size: 16 }),
+          ctaTarget: '_blank', ctaRel: 'noopener noreferrer', ctaIcon: h(IconClaude, { size: 16 }),
         })),
       h('section', { className: 'hub-section hub-section-ruled', id: 'add' },
         h('p', { className: 'hub-label' }, 'Contribute'),
