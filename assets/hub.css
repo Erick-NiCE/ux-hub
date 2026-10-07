@@ -33,3 +33,13 @@ body { margin: 0; background: var(--lynn-color-bg); color: var(--lynn-color-text
 @media (max-width: 480px) { .hub-nav-pill { display: none; } }
 /* overflow-x:hidden on the ThemeProvider's .lynn-root would stop the sticky nav sticking; clip does not. */
 .lynn-root { overflow: visible; overflow-x: clip; }
+
+/* Light mode: Lynn blue (#3694fc) is a dark-UI accent and reads ~3:1 on a light page. Darken text uses only. */
+[data-lynn-theme=light] .hub-label,
+[data-lynn-theme=light] .hub-open { color: #1a56b8; }
+[data-lynn-theme=light] .hub-title span { background: linear-gradient(90deg, #1a56b8, #7440d6); -webkit-background-clip: text; background-clip: text; }
+[data-lynn-theme=light] .hub-link:hover .hub-open { color: #0f3a85; }
+/* The hero is dark in every theme, so its gradient word stays light. */
+.lynn-hero .hub-grad { background: linear-gradient(90deg, #8ec5ff, #d9c2ff); -webkit-background-clip: text; background-clip: text; color: transparent; }
+.hub-actions { margin: 0 0 28px; }
+.hub-desc + .hub-desc { margin-top: -16px; }
