@@ -71,7 +71,8 @@ window.HUB_SITES = [
     desc: "Where new UX concepts start. Begin each one with the Lyra Design System so concepts match the product from the first draft.",
     url: "https://claude.ai/design?noredir=1",
     category: "Tools", tone: "lynn", icon: "IconClaude", access: "SSO",
-    tags: ["concepts", "lyra", "prototype"], featured: true
+    tags: ["concepts", "lyra", "prototype"], featured: true,
+    owner: { name: "Erick Mathews", email: "erick.mathews@nice.com" }
   },
   {
     title: "Lyra & SOL Storybook",
@@ -241,5 +242,13 @@ window.HUB_SITES = [
     category: "Events", tone: "coral", icon: "IconNiceSmile", access: "SSO",
     tags: ["all-hands", "recording", "2026"],
     owner: { name: "John Tucker", email: "John.Tucker@nice.com" }
+  },
+  {
+    title: "NiCE CXone Guru",
+    tagline: "A custom GPT for CXone questions",
+    desc: "A custom GPT on ChatGPT for asking questions about NiCE CXone.",
+    url: "https://chatgpt.com/g/g-68653401f46881918e54bf4df7e8c1d2-nice-cxone-guru",
+    category: "Tools", tone: "emerald", icon: "IconSparkles", access: "Public",
+    tags: ["gpt", "cxone", "ai"]
   }
 ];
