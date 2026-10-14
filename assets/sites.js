@@ -226,14 +226,6 @@ window.HUB_SITES = [
     tags: ["confluence","docs","wiki"]
   },
   {
-    title: "Cognigy Confluence",
-    tagline: "Cognigy wiki spaces",
-    desc: "Cognigy's Confluence spaces. Being transported into CXone's Confluence (planned 10/6/26).",
-    url: "https://cognigy.atlassian.net/wiki/spaces",
-    category: "Community", tone: "teal", icon: "IconClipboard", access: "SSO",
-    tags: ["confluence","cognigy","wiki"]
-  },
-  {
     title: "Cognigy Chat Bot",
     tagline: "Cognigy webchat bot",
     desc: "The Cognigy webchat bot on CXone North America.",
