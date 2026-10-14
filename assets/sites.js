@@ -5,7 +5,7 @@
  *   tagline  One line under the name
  *   desc     1-2 sentences on what it is for
  *   url      Where it lives
- *   category "Design System" | "Tools" | "Learning" | "Events" | "Community"
+ *   category "Design System" | "Tools" | "Learning" | "Events" | "Community" | "Help & Knowledge"
  *   tone     blue | electric-blue | indigo | emerald | teal | coral | lynn
  *   icon     Name of an official Lynn icon: IconBolt, IconBulb, IconCheck, IconClipboard,
  *            IconClaude (Claude mark), IconEye, IconNiceSmile, IconSpark, IconSparkles, IconArrowRight, IconLock
@@ -136,5 +136,109 @@ window.HUB_SITES = [
     category: "Community", tone: "electric-blue", icon: "IconNiceSmile", access: "SSO",
     tags: ["sharepoint", "team", "ux-global"],
     owner: { name: "Megan Fisher", email: "Megan.Fisher@nice.com" }
+  },
+  {
+    title: "CXone Help Center",
+    tagline: "Official CXone product help",
+    desc: "The CXone help center: product documentation, guides and release information for CXone users and admins.",
+    url: "https://help.nicecxone.com/",
+    category: "Help & Knowledge", tone: "blue", icon: "IconBulb", access: "Public",
+    tags: ["help","docs","cxone"]
+  },
+  {
+    title: "CXone Developer Portal",
+    tagline: "APIs and developer docs",
+    desc: "Developer documentation and API references for building on CXone.",
+    url: "https://developer.niceincontact.com/",
+    category: "Help & Knowledge", tone: "electric-blue", icon: "IconClipboard", access: "Public",
+    tags: ["developer","api","docs"]
+  },
+  {
+    title: "Cognigy Docs",
+    tagline: "Cognigy product documentation",
+    desc: "Documentation for the Cognigy conversational AI platform.",
+    url: "https://docs.cognigy.com/",
+    category: "Help & Knowledge", tone: "teal", icon: "IconBulb", access: "Public",
+    tags: ["cognigy","docs","ai"]
+  },
+  {
+    title: "Cognigy Academy",
+    tagline: "Cognigy training courses",
+    desc: "Training and certification courses for the Cognigy platform.",
+    url: "https://academy.cognigy.com/",
+    category: "Help & Knowledge", tone: "emerald", icon: "IconNiceSmile", access: "SSO",
+    tags: ["cognigy","training","learning"]
+  },
+  {
+    title: "NiCE AI Hub",
+    tagline: "NiCE AI in one place",
+    desc: "The NiCE AI Hub, a central place for NiCE AI products and resources.",
+    url: "https://aihub.nice.com/",
+    category: "Help & Knowledge", tone: "indigo", icon: "IconSparkles", access: "SSO",
+    tags: ["ai","hub"]
+  },
+  {
+    title: "OneExpert",
+    tagline: "CXone Expert community",
+    desc: "The OneExpert site on CXone Expert, for knowledge and support content.",
+    url: "https://onexpert.cxoneexpert.ai/",
+    category: "Help & Knowledge", tone: "blue", icon: "IconBulb", access: "SSO",
+    tags: ["expert","knowledge","help"]
+  },
+  {
+    title: "Expert Help",
+    tagline: "NiCE Expert help center",
+    desc: "The NiCE Expert help site for product knowledge and how-to content.",
+    url: "https://expert-help.nice.com/",
+    category: "Help & Knowledge", tone: "electric-blue", icon: "IconBulb", access: "SSO",
+    tags: ["expert","help","knowledge"]
+  },
+  {
+    title: "Success Center (Demo)",
+    tagline: "Demo of the CXone Expert success center",
+    desc: "A demo of the success center built on CXone Expert.",
+    url: "https://success-center-demo.cxoneexpert.ai/",
+    category: "Help & Knowledge", tone: "teal", icon: "IconCheck", access: "SSO",
+    tags: ["expert","success","demo"]
+  },
+  {
+    title: "NiCE.com",
+    tagline: "The NiCE public website",
+    desc: "The public NiCE company website.",
+    url: "https://www.nice.com/",
+    category: "Help & Knowledge", tone: "coral", icon: "IconSpark", access: "Public",
+    tags: ["website","marketing"]
+  },
+  {
+    title: "Dovetail",
+    tagline: "User studies",
+    desc: "User research repository: studies, insights and recordings from UX research.",
+    url: "https://nice.dovetail.com/",
+    category: "Learning", tone: "coral", icon: "IconEye", access: "SSO",
+    tags: ["research","studies","insights"]
+  },
+  {
+    title: "NiCE Confluence",
+    tagline: "CXone Confluence workspace",
+    desc: "The NiCE CXone Confluence site: team spaces and documentation.",
+    url: "https://nice-ce-cxone-prod.atlassian.net/",
+    category: "Community", tone: "electric-blue", icon: "IconClipboard", access: "SSO",
+    tags: ["confluence","docs","wiki"]
+  },
+  {
+    title: "Cognigy Confluence",
+    tagline: "Cognigy wiki spaces",
+    desc: "Cognigy's Confluence spaces. Being transported into CXone's Confluence (planned 10/6/26).",
+    url: "https://cognigy.atlassian.net/wiki/spaces",
+    category: "Community", tone: "teal", icon: "IconClipboard", access: "SSO",
+    tags: ["confluence","cognigy","wiki"]
+  },
+  {
+    title: "Cognigy Chat Bot",
+    tagline: "Cognigy webchat bot",
+    desc: "The Cognigy webchat bot on CXone North America.",
+    url: "https://cognigy-webchat-na1.nicecxone.com/",
+    category: "Tools", tone: "emerald", icon: "IconSparkles", access: "Public",
+    tags: ["bot","cognigy","chat"]
   }
 ];
