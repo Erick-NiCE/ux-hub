@@ -90,7 +90,7 @@ window.HUB_SITES = [
     category: "Events", tone: "coral", icon: "IconBolt", access: "Access code",
     tags: ["wings", "session", "2026"],
     lynn: true,
-    owner: { name: "Erick Mathews", email: "erick.mathews@nice.com" }
+    owner: { name: "Megan Fisher", email: "Megan.Fisher@nice.com" }
   },
   {
     title: "Designer Documentation",
