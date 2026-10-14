@@ -43,3 +43,19 @@ body { margin: 0; background: var(--lynn-color-bg); color: var(--lynn-color-text
 .hub-actions { margin: 0 0 28px; }
 .hub-desc + .hub-desc { margin-top: -16px; }
 .hub-card-actions { display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
+/* Cards: a cover link under the card opens the site. The card lets clicks fall through to it, except on the owner
+   link, so the two links never nest. The card's own :hover can't fire, so the lift is mirrored from the wrapper. */
+.hub-link { position: relative; }
+.hub-link-cover { position: absolute; inset: 0; z-index: 1; border-radius: inherit; }
+.hub-link .hub-card { position: relative; z-index: 2; pointer-events: none; }
+.hub-link:hover .lynn-feature-card-full { transform: translateY(-4px); box-shadow: 0 24px 60px rgba(0, 0, 0, 0.4), 0 0 0 1px var(--lynn-t-color); border-color: var(--lynn-t-color); }
+@media (prefers-reduced-motion: reduce) { .hub-link:hover .lynn-feature-card-full { transform: none; } }
+.hub-link:focus-within:has(.hub-link-cover:focus-visible) { outline: 2px solid var(--lynn-color-blue); outline-offset: 3px; }
+.hub-link-cover:focus-visible { outline: none; }
+.hub-owner { pointer-events: auto; display: inline-flex; align-items: center; gap: 8px; margin: 0 0 16px; padding: 4px 10px 4px 4px; border-radius: 100px; border: 1px solid var(--lynn-color-border); font-size: 13px; color: var(--lynn-color-text); text-decoration: none; transition: border-color 0.2s, background 0.2s; }
+.hub-owner-label { color: var(--lynn-color-text-secondary); }
+.hub-owner-cta { font-size: 12px; font-weight: 600; color: var(--lynn-color-blue); }
+.hub-owner:hover { border-color: var(--lynn-color-blue); background: var(--lynn-color-surface); }
+.hub-owner:focus-visible { outline: 2px solid var(--lynn-color-blue); outline-offset: 2px; }
+[data-lynn-theme=light] .hub-owner-cta { color: #1a56b8; }
+.hub-beta { font-size: 13px; color: var(--lynn-color-text-secondary); white-space: nowrap; }

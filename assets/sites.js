@@ -12,7 +12,9 @@
  *   access   "Public" | "SSO" | "Access code"   (what a visitor will hit)
  *   tags     Short keywords (also searched)
  *   featured true to pin it in the top row
- *   lynn     true if the site is built with Lynn UI (shows a "Built with Lynn" tag)
+ *   lynn     true if the site is built with Lynn UI (shows a "Built with Lynn" tag, beta only)
+ *   owner    { name, email } of who to ask about it; the name opens a Teams chat
+ *   beta     true to show the card only when the Beta switch in the header is on
  */
 window.HUB_SITES = [
   {
@@ -22,7 +24,8 @@ window.HUB_SITES = [
     url: "https://erick-nice.github.io/nice-designer-suite-website/index.html",
     category: "Tools", tone: "indigo", icon: "IconClipboard", access: "Access code",
     tags: ["agents", "marketplace", "audit"], featured: true,
-    lynn: true
+    lynn: true,
+    owner: { name: "Erick Mathews", email: "erick.mathews@nice.com" }
   },
   {
     title: "Supercharge Marketplace",
@@ -31,7 +34,8 @@ window.HUB_SITES = [
     url: "https://erick-nice.github.io/nice-designer-suite-website/marketplace.html",
     category: "Tools", tone: "indigo", icon: "IconClaude", access: "Access code",
     tags: ["skills", "marketplace", "agents"], featured: true,
-    lynn: true
+    lynn: true,
+    owner: { name: "Erick Mathews", email: "erick.mathews@nice.com" }
   },
   {
     title: "Lynn",
@@ -39,7 +43,8 @@ window.HUB_SITES = [
     desc: "Lynn is a component library used only for internal sites and tools, like this hub and the NiCE Designer site. It is not used for product UI, which is built on Lyra and SOL. Browse its components, tokens and themes.",
     url: "https://erick-nice.github.io/nice-designer-suite-website/lynn.html",
     category: "Design System", tone: "lynn", icon: "IconSparkles", access: "Access code",
-    tags: ["components", "tokens", "internal"], featured: true, lynn: true
+    tags: ["components", "tokens", "internal"], featured: true, lynn: true,
+    owner: { name: "Erick Mathews", email: "erick.mathews@nice.com" }, beta: true
   },
   {
     title: "Lyra",
@@ -47,7 +52,8 @@ window.HUB_SITES = [
     desc: "The Lyra static web app: components, patterns and guidance for building on the NiCE CXone design language.",
     url: "https://lyra-swa.nice.com/index.html",
     category: "Design System", tone: "blue", icon: "IconSpark", access: "SSO",
-    tags: ["lyra", "components", "tokens"], featured: true
+    tags: ["lyra", "components", "tokens"], featured: true,
+    owner: { name: "Ron Merrell", email: "Ron.Merrell@nice.com" }
   },
   {
     title: "NDLR",
@@ -56,7 +62,8 @@ window.HUB_SITES = [
     url: "https://ndlr.netlify.app/#/erick-mathews/uncategorized",
     category: "Tools", tone: "emerald", icon: "IconEye", access: "Password",
     tags: ["ndlr", "library"], featured: true,
-    lynn: true
+    lynn: true,
+    owner: { name: "Erick Mathews", email: "erick.mathews@nice.com" }, beta: true
   },
   {
     title: "Claude Design",
@@ -81,7 +88,8 @@ window.HUB_SITES = [
     url: "https://erick-nice.github.io/nice-designer-suite-website/wings-2026.html",
     category: "Events", tone: "coral", icon: "IconBolt", access: "Access code",
     tags: ["wings", "session", "2026"],
-    lynn: true
+    lynn: true,
+    owner: { name: "Erick Mathews", email: "erick.mathews@nice.com" }
   },
   {
     title: "Designer Documentation",
@@ -90,7 +98,8 @@ window.HUB_SITES = [
     url: "https://erick-nice.github.io/nice-designer-suite-website/install-guide.html",
     category: "Learning", tone: "teal", icon: "IconBulb", access: "Access code",
     tags: ["docs", "install", "faq"],
-    lynn: true
+    lynn: true,
+    owner: { name: "Erick Mathews", email: "erick.mathews@nice.com" }
   },
   {
     title: "UX Team Trainings",
@@ -98,7 +107,8 @@ window.HUB_SITES = [
     desc: "Recordings of UX team trainings on the UX-Global SharePoint site. Catch up on a session or revisit one.",
     url: "https://niceonlinena.sharepoint.com/sites/UX-Global/SitePages/UX-Team-Trainings.aspx",
     category: "Learning", tone: "emerald", icon: "IconNiceSmile", access: "SSO",
-    tags: ["training", "recordings", "sharepoint"]
+    tags: ["training", "recordings", "sharepoint"],
+    owner: { name: "Megan Fisher", email: "Megan.Fisher@nice.com" }
   },
   {
     title: "Legacy Design Documentation",

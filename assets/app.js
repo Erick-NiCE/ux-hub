@@ -1,9 +1,9 @@
-import { createElement as h, useEffect, useMemo, useState } from 'react';
+import { createContext, createElement as h, useContext, useEffect, useMemo, useState } from 'react';
 import { createRoot } from 'react-dom/client';
 import {
-  Badge, Button, CtaBanner, FeatureCard, Footer, Hero, IconArrowRight, IconBolt, IconBulb, IconCheck,
+  Avatar, Badge, Button, CtaBanner, FeatureCard, Footer, Hero, IconArrowRight, IconBolt, IconBulb, IconCheck,
   IconClipboard, IconEye, IconLock, IconNiceSmile, IconSpark, IconSparkles, IconCard, Nav, SearchInput,
-  Tabs, ThemeProvider, ThemeToggle, useLynnTheme,
+  Switch, Tabs, ThemeProvider, ThemeToggle, useLynnTheme,
 } from '../vendor/lynn-ui/dist/index.js';
 
 /* The Claude starburst, the same mark the NiCE Designer plugin uses for Supercharge (src/ui/icons.tsx IconClaude).
@@ -19,12 +19,16 @@ function IconClaude({ size = 16 }) {
 const ICONS = { IconClaude,  IconBolt, IconBulb, IconCheck, IconClipboard, IconEye, IconNiceSmile, IconSpark, IconSparkles, IconArrowRight, IconLock };
 const ACCESS_STATUS = { Public: 'good', SSO: 'active', 'Access code': 'beta', Password: 'beta' };
 const THEME_KEY = 'ux-hub-theme';
+const BETA_KEY = 'ux-hub-beta';
 const sites = window.HUB_SITES || [];
-/* A tag only earns a chip if more than one site carries it; one-offs (e.g. "ndlr" on NDLR) just repeat the title.
-   They stay searchable. */
-const TAG_COUNTS = {};
-sites.forEach((s) => (s.tags || []).forEach((t) => { TAG_COUNTS[t] = (TAG_COUNTS[t] || 0) + 1; }));
-const sharedTags = (s) => (s.tags || []).filter((t) => TAG_COUNTS[t] > 1);
+/* Beta hides the Lynn and NDLR cards and every "Built with Lynn" tag until the header switch is on. */
+const BetaContext = createContext(false);
+const teamsChat = (email) => `https://teams.microsoft.com/l/chat/0/0?users=${email}`;
+const initials = (name) => name.split(/\s+/).map((w) => w[0]).slice(0, 2).join('').toUpperCase();
+
+function readBeta() {
+  try { return localStorage.getItem(BETA_KEY) === '1'; } catch (e) { return false; }
+}
 
 function readTheme() {
   try { const t = localStorage.getItem(THEME_KEY); if (t === 'lynn' || t === 'light' || t === 'dark') return t; } catch (e) {}
@@ -42,43 +46,63 @@ function ThemeBridge() {
   return null;
 }
 
-function SiteCard({ site }) {
+function SiteCard({ site, tags }) {
+  const beta = useContext(BetaContext);
   const Icon = ICONS[site.icon] || IconSparkles;
   const tone = site.tone || 'blue';
   const c = `var(--lynn-color-${tone})`;
-  return h('a', {
-    className: 'hub-link', href: site.url, target: '_blank', rel: 'noopener noreferrer',
-    'aria-label': `${site.title} (opens in a new tab)`,
-  },
+  /* The whole card opens the site through a cover link, so the owner link can sit on top of it without nesting anchors. */
+  return h('div', { className: 'hub-link' },
+    h('a', {
+      className: 'hub-link-cover', href: site.url, target: '_blank', rel: 'noopener noreferrer',
+      'aria-label': `${site.title} (opens in a new tab)`,
+    }),
     h(FeatureCard, {
       icon: h(Icon, { size: 26 }),
       iconGradient: `linear-gradient(135deg, ${c}, var(--lynn-color-lynn))`,
       accentColor: c,
       name: site.title,
       tagline: site.tagline,
-      tags: sharedTags(site),
+      tags,
       status: h('span', { className: 'hub-status' }, site.access !== 'Public' ? h(IconLock, { size: 11 }) : null, site.access),
       statusVariant: ACCESS_STATUS[site.access] || 'active',
       className: 'hub-card',
     },
       h('p', { className: 'hub-card-desc' }, site.desc),
+      site.owner ? h('a', {
+        className: 'hub-owner', href: teamsChat(site.owner.email), target: '_blank', rel: 'noopener noreferrer',
+        title: `Chat with ${site.owner.name} on Teams`,
+      },
+        h(Avatar, { initials: initials(site.owner.name), size: 'sm', ariaLabel: site.owner.name }),
+        h('span', null, h('span', { className: 'hub-owner-label' }, 'Owner '), site.owner.name),
+        h('span', { className: 'hub-owner-cta' }, 'Chat on Teams')) : null,
       h('div', { className: 'hub-card-actions' },
         h('span', { className: 'hub-open' }, 'Open site', h(IconArrowRight, { size: 14 })),
-        site.lynn ? h(Badge, { tone: 'lynn', bordered: true, icon: h(IconSparkles, { size: 10 }) }, 'Built with Lynn') : null),
+        beta && site.lynn ? h(Badge, { tone: 'lynn', bordered: true, icon: h(IconSparkles, { size: 10 }) }, 'Built with Lynn') : null),
     ));
 }
 
 function Directory() {
+  const beta = useContext(BetaContext);
   const [q, setQ] = useState('');
   const [cat, setCat] = useState('All');
-  const cats = useMemo(() => ['All', ...new Set(sites.map((s) => s.category))], []);
+  const visible = useMemo(() => sites.filter((s) => beta || !s.beta), [beta]);
+  const cats = useMemo(() => ['All', ...new Set(visible.map((s) => s.category))], [visible]);
+  /* A tag only earns a chip if more than one visible site carries it; one-offs (e.g. "ndlr" on NDLR) just repeat
+     the title. They stay searchable. */
+  const tagCounts = useMemo(() => {
+    const counts = {};
+    visible.forEach((s) => (s.tags || []).forEach((t) => { counts[t] = (counts[t] || 0) + 1; }));
+    return counts;
+  }, [visible]);
+  useEffect(() => { if (!cats.includes(cat)) setCat('All'); }, [cats, cat]);
   const list = useMemo(() => {
     const needle = q.trim().toLowerCase();
-    return sites
+    return visible
       .filter((s) => (cat === 'All' || s.category === cat) &&
-        (!needle || [s.title, s.tagline, s.desc, s.category, s.lynn ? 'lynn built with lynn' : '', ...(s.tags || [])].join(' ').toLowerCase().includes(needle)))
+        (!needle || [s.title, s.tagline, s.desc, s.category, beta && s.lynn ? 'lynn built with lynn' : '', s.owner ? s.owner.name : '', ...(s.tags || [])].join(' ').toLowerCase().includes(needle)))
       .sort((a, b) => (b.featured ? 1 : 0) - (a.featured ? 1 : 0));
-  }, [q, cat]);
+  }, [q, cat, visible, beta]);
   return h('section', { className: 'hub-section', id: 'sites' },
     h('p', { className: 'hub-label' }, 'Directory'),
     h('h2', { className: 'hub-title' }, 'All ', h('span', null, 'UX sites')),
@@ -89,17 +113,20 @@ function Directory() {
     ),
     h('p', { className: 'hub-count', 'aria-live': 'polite' }, `${list.length} ${list.length === 1 ? 'site' : 'sites'}`),
     list.length
-      ? h('div', { className: 'hub-grid' }, list.map((s) => h(SiteCard, { site: s, key: s.url })))
+      ? h('div', { className: 'hub-grid' }, list.map((s) => h(SiteCard, { site: s, key: s.url, tags: (s.tags || []).filter((t) => tagCounts[t] > 1) })))
       : h('p', { className: 'hub-empty' }, 'No sites match. Try another search or category.'));
 }
 
 function App() {
-  return h(ThemeProvider, { defaultTheme: readTheme(), className: 'hub-root' },
+  const [beta, setBeta] = useState(readBeta);
+  useEffect(() => { try { localStorage.setItem(BETA_KEY, beta ? '1' : '0'); } catch (e) {} }, [beta]);
+  return h(BetaContext.Provider, { value: beta }, h(ThemeProvider, { defaultTheme: readTheme(), className: 'hub-root' },
     h(ThemeBridge),
     h(Nav, {
       logo: h('span', null, h('span', { className: 'lynn-nav-logo-nice' }, 'NiCE'), h('span', { className: 'lynn-nav-logo-designer' }, ' UX Hub')),
       logoHref: '#top',
       cta: [
+        h(Switch, { key: 'beta', className: 'hub-beta', size: 'sm', checked: beta, onChange: setBeta, label: 'Beta' }),
         h(ThemeToggle, { key: 'theme', showLabels: false }),
         h('a', { key: 'add', className: 'hub-nav-pill', href: '#add' }, 'Add a site'),
       ],
@@ -137,7 +164,7 @@ function App() {
     h(Footer, {
       logo: h('span', null, h('span', { className: 'lynn-footer-logo-nice' }, 'NiCE'), h('span', { className: 'lynn-footer-logo-designer' }, ' UX Hub')),
       columns: [],
-    }));
+    })));
 }
 
 createRoot(document.getElementById('app')).render(h(App));
