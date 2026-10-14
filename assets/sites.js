@@ -11,7 +11,7 @@
  *            IconClaude (Claude mark), IconEye, IconNiceSmile, IconSpark, IconSparkles, IconArrowRight, IconLock
  *   access   "Public" | "SSO" | "Access code"   (what a visitor will hit)
  *   tags     Short keywords (also searched)
- *   featured true to pin it in the top row
+ *   featured 1-5: shows it in the default Featured tab, in that order (and first under All)
  *   lynn     true if the site is built with Lynn UI (shows a "Built with Lynn" tag, beta only)
  *   owner    { name, email } of who to ask about it; the name opens a Teams chat
  *   beta     true to show the card only when the Beta switch in the header is on
@@ -23,7 +23,7 @@ window.HUB_SITES = [
     desc: "Native tools synced to Storybook, plus a full marketplace. The official way to get and self-audit design system components for agents like Claude Code, built for agentic workflows. Use Storybook components without a GitHub account, and self-audit your patterns.",
     url: "https://erick-nice.github.io/nice-designer-suite-website/index.html",
     category: "Tools", tone: "indigo", icon: "IconClipboard", access: "Access code",
-    tags: ["agents", "marketplace", "audit"], featured: true,
+    tags: ["agents", "marketplace", "audit"], featured: 1,
     lynn: true,
     owner: { name: "Erick Mathews", email: "erick.mathews@nice.com" }
   },
@@ -33,7 +33,7 @@ window.HUB_SITES = [
     desc: "Browse and install community-built skills that ship with Supercharge, the NiCE Designer Suite's agent tooling.",
     url: "https://erick-nice.github.io/nice-designer-suite-website/marketplace.html",
     category: "Tools", tone: "indigo", icon: "IconClaude", access: "Access code",
-    tags: ["skills", "marketplace", "agents"], featured: true,
+    tags: ["skills", "marketplace", "agents"],
     lynn: true,
     owner: { name: "Erick Mathews", email: "erick.mathews@nice.com" }
   },
@@ -43,7 +43,7 @@ window.HUB_SITES = [
     desc: "Lynn is a component library used only for internal sites and tools, like this hub and the NiCE Designer site. It is not used for product UI, which is built on Lyra and SOL. Browse its components, tokens and themes.",
     url: "https://erick-nice.github.io/nice-designer-suite-website/lynn.html",
     category: "Design System", tone: "lynn", icon: "IconSparkles", access: "Access code",
-    tags: ["components", "tokens", "internal"], featured: true, lynn: true,
+    tags: ["components", "tokens", "internal"], lynn: true,
     owner: { name: "Erick Mathews", email: "erick.mathews@nice.com" }, beta: true
   },
   {
@@ -52,7 +52,7 @@ window.HUB_SITES = [
     desc: "The Lyra static web app: components, patterns and guidance for building on the NiCE CXone design language.",
     url: "https://lyra-swa.nice.com/index.html",
     category: "Design System", tone: "blue", icon: "IconSpark", access: "SSO",
-    tags: ["lyra", "components", "tokens"], featured: true,
+    tags: ["lyra", "components", "tokens"], featured: 2,
     owner: { name: "Ron Merrell", email: "Ron.Merrell@nice.com" }
   },
   {
@@ -61,7 +61,7 @@ window.HUB_SITES = [
     desc: "The NDLR library, with this workspace's uncategorized items. Requires a password.",
     url: "https://ndlr.netlify.app/#/erick-mathews/uncategorized",
     category: "Tools", tone: "emerald", icon: "IconEye", access: "Password",
-    tags: ["ndlr", "library"], featured: true,
+    tags: ["ndlr", "library"],
     lynn: true,
     owner: { name: "Erick Mathews", email: "erick.mathews@nice.com" }, beta: true
   },
@@ -71,7 +71,7 @@ window.HUB_SITES = [
     desc: "Where new UX concepts start. Begin each one with the Lyra Design System so concepts match the product from the first draft.",
     url: "https://claude.ai/design?noredir=1",
     category: "Tools", tone: "lynn", icon: "IconClaude", access: "SSO",
-    tags: ["concepts", "lyra", "prototype"], featured: true,
+    tags: ["concepts", "lyra", "prototype"], featured: 3,
     owner: { name: "Erick Mathews", email: "erick.mathews@nice.com" }
   },
   {
@@ -80,7 +80,7 @@ window.HUB_SITES = [
     desc: "One Storybook with both Lyra and SOL components, used as the developer source of truth. NDS pulls from it so you can use these components without a GitHub account.",
     url: "https://na1.dev.nice-incontact.com/sol/?path=/docs/introduction--docs",
     category: "Design System", tone: "teal", icon: "IconCheck", access: "SSO",
-    tags: ["storybook", "lyra", "sol"],
+    tags: ["storybook", "lyra", "sol"], featured: 4,
     owner: { name: "Ron Merrell", email: "Ron.Merrell@nice.com" }
   },
   {
@@ -118,7 +118,7 @@ window.HUB_SITES = [
     desc: "The legacy design documentation in Confluence. Use it for older guidance that has not moved to Lyra or SOL yet.",
     url: "https://nice-ce-cxone-prod.atlassian.net/wiki/spaces/EUIUX/overview",
     category: "Learning", tone: "electric-blue", icon: "IconBulb", access: "SSO",
-    tags: ["legacy", "confluence", "docs"]
+    tags: ["legacy", "confluence", "docs"],
   },
   {
     title: "UX Jira Board",
@@ -135,7 +135,7 @@ window.HUB_SITES = [
     desc: "The UX-Global SharePoint site: team news, files and resources.",
     url: "https://niceonlinena.sharepoint.com/sites/UX-Global/SitePages/Home.aspx",
     category: "Community", tone: "electric-blue", icon: "IconNiceSmile", access: "SSO",
-    tags: ["sharepoint", "team", "ux-global"],
+    tags: ["sharepoint", "team", "ux-global"], featured: 5,
     owner: { name: "Megan Fisher", email: "Megan.Fisher@nice.com" }
   },
   {
@@ -144,7 +144,7 @@ window.HUB_SITES = [
     desc: "The CXone help center: product documentation, guides and release information for CXone users and admins.",
     url: "https://help.nicecxone.com/",
     category: "Help & Knowledge", tone: "blue", icon: "IconBulb", access: "Public",
-    tags: ["help","docs","cxone"]
+    tags: ["help","docs","cxone"],
   },
   {
     title: "CXone Developer Portal",
@@ -152,7 +152,7 @@ window.HUB_SITES = [
     desc: "Developer documentation and API references for building on CXone.",
     url: "https://developer.niceincontact.com/",
     category: "Help & Knowledge", tone: "electric-blue", icon: "IconClipboard", access: "Public",
-    tags: ["developer","api","docs"]
+    tags: ["developer","api","docs"],
   },
   {
     title: "Cognigy Docs",
@@ -160,7 +160,7 @@ window.HUB_SITES = [
     desc: "Documentation for the Cognigy conversational AI platform.",
     url: "https://docs.cognigy.com/",
     category: "Help & Knowledge", tone: "teal", icon: "IconBulb", access: "Public",
-    tags: ["cognigy","docs","ai"]
+    tags: ["cognigy","docs","ai"],
   },
   {
     title: "Cognigy Academy",
@@ -168,7 +168,7 @@ window.HUB_SITES = [
     desc: "Training and certification courses for the Cognigy platform.",
     url: "https://academy.cognigy.com/",
     category: "Help & Knowledge", tone: "emerald", icon: "IconNiceSmile", access: "SSO",
-    tags: ["cognigy","training","learning"]
+    tags: ["cognigy","training","learning"],
   },
   {
     title: "NiCE AI Hub",
@@ -176,7 +176,7 @@ window.HUB_SITES = [
     desc: "The NiCE AI Hub, a central place for NiCE AI products and resources.",
     url: "https://aihub.nice.com/",
     category: "Help & Knowledge", tone: "indigo", icon: "IconSparkles", access: "SSO",
-    tags: ["ai","hub"]
+    tags: ["ai","hub"],
   },
   {
     title: "OneExpert",
@@ -184,7 +184,7 @@ window.HUB_SITES = [
     desc: "The OneExpert site on CXone Expert, for knowledge and support content.",
     url: "https://onexpert.cxoneexpert.ai/",
     category: "Help & Knowledge", tone: "blue", icon: "IconBulb", access: "SSO",
-    tags: ["expert","knowledge","help"]
+    tags: ["expert","knowledge","help"],
   },
   {
     title: "Expert Help",
@@ -192,7 +192,7 @@ window.HUB_SITES = [
     desc: "The NiCE Expert help site for product knowledge and how-to content.",
     url: "https://expert-help.nice.com/",
     category: "Help & Knowledge", tone: "electric-blue", icon: "IconBulb", access: "SSO",
-    tags: ["expert","help","knowledge"]
+    tags: ["expert","help","knowledge"],
   },
   {
     title: "Success Center (Demo)",
@@ -200,7 +200,7 @@ window.HUB_SITES = [
     desc: "A demo of the success center built on CXone Expert.",
     url: "https://success-center-demo.cxoneexpert.ai/",
     category: "Help & Knowledge", tone: "teal", icon: "IconCheck", access: "SSO",
-    tags: ["expert","success","demo"]
+    tags: ["expert","success","demo"],
   },
   {
     title: "NiCE.com",
@@ -208,7 +208,7 @@ window.HUB_SITES = [
     desc: "The public NiCE company website.",
     url: "https://www.nice.com/",
     category: "Help & Knowledge", tone: "coral", icon: "IconSpark", access: "Public",
-    tags: ["website","marketing"]
+    tags: ["website","marketing"],
   },
   {
     title: "Dovetail",
@@ -216,7 +216,7 @@ window.HUB_SITES = [
     desc: "User research repository: studies, insights and recordings from UX research.",
     url: "https://nice.dovetail.com/",
     category: "Learning", tone: "coral", icon: "IconEye", access: "SSO",
-    tags: ["research","studies","insights"]
+    tags: ["research","studies","insights"],
   },
   {
     title: "NiCE Confluence",
@@ -224,7 +224,7 @@ window.HUB_SITES = [
     desc: "The NiCE CXone Confluence site: team spaces and documentation.",
     url: "https://nice-ce-cxone-prod.atlassian.net/",
     category: "Community", tone: "electric-blue", icon: "IconClipboard", access: "SSO",
-    tags: ["confluence","docs","wiki"]
+    tags: ["confluence","docs","wiki"],
   },
   {
     title: "Cognigy Chat Bot",
@@ -232,7 +232,7 @@ window.HUB_SITES = [
     desc: "The Cognigy webchat bot on CXone North America.",
     url: "https://cognigy-webchat-na1.nicecxone.com/",
     category: "Tools", tone: "emerald", icon: "IconSparkles", access: "Public",
-    tags: ["bot","cognigy","chat"]
+    tags: ["bot","cognigy","chat"],
   },
   {
     title: "UX All Hands: October",
@@ -249,6 +249,6 @@ window.HUB_SITES = [
     desc: "A custom GPT on ChatGPT for asking questions about NiCE CXone.",
     url: "https://chatgpt.com/g/g-68653401f46881918e54bf4df7e8c1d2-nice-cxone-guru",
     category: "Tools", tone: "emerald", icon: "IconSparkles", access: "Public",
-    tags: ["gpt", "cxone", "ai"]
+    tags: ["gpt", "cxone", "ai"],
   }
 ];

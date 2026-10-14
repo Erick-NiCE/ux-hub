@@ -85,9 +85,9 @@ function SiteCard({ site, tags }) {
 function Directory() {
   const beta = useContext(BetaContext);
   const [q, setQ] = useState('');
-  const [cat, setCat] = useState('All');
+  const [cat, setCat] = useState('Featured');
   const visible = useMemo(() => sites.filter((s) => beta || !s.beta), [beta]);
-  const cats = useMemo(() => ['All', ...new Set(visible.map((s) => s.category))], [visible]);
+  const cats = useMemo(() => ['Featured', 'All', ...new Set(visible.map((s) => s.category))], [visible]);
   /* A tag only earns a chip if more than one visible site carries it; one-offs (e.g. "ndlr" on NDLR) just repeat
      the title. They stay searchable. */
   const tagCounts = useMemo(() => {
@@ -95,17 +95,17 @@ function Directory() {
     visible.forEach((s) => (s.tags || []).forEach((t) => { counts[t] = (counts[t] || 0) + 1; }));
     return counts;
   }, [visible]);
-  useEffect(() => { if (!cats.includes(cat)) setCat('All'); }, [cats, cat]);
+  useEffect(() => { if (!cats.includes(cat)) setCat('Featured'); }, [cats, cat]);
   const list = useMemo(() => {
     const needle = q.trim().toLowerCase();
     return visible
-      .filter((s) => (cat === 'All' || s.category === cat) &&
+      .filter((s) => (needle || cat === 'All' || (cat === 'Featured' ? s.featured : s.category === cat)) &&
         (!needle || [s.title, s.tagline, s.desc, s.category, beta && s.lynn ? 'lynn built with lynn' : '', s.owner ? s.owner.name : '', ...(s.tags || [])].join(' ').toLowerCase().includes(needle)))
-      .sort((a, b) => (b.featured ? 1 : 0) - (a.featured ? 1 : 0));
+      .sort((a, b) => (a.featured || 99) - (b.featured || 99));
   }, [q, cat, visible, beta]);
   return h('section', { className: 'hub-section', id: 'sites' },
     h('p', { className: 'hub-label' }, 'Directory'),
-    h('h2', { className: 'hub-title' }, 'All ', h('span', null, 'UX sites')),
+    h('h2', { className: 'hub-title' }, cat === 'Featured' && !q.trim() ? 'Featured ' : 'All ', h('span', null, cat === 'Featured' && !q.trim() ? 'sites' : 'UX sites')),
     h('p', { className: 'hub-desc' }, 'Open a card to go to the site. The badge shows what you will meet there: public, SSO, a password or an access code.'),
     h('div', { className: 'hub-toolbar' },
       h(Tabs, { variant: 'elevated', ariaLabel: 'Filter by category', value: cat, onChange: setCat, options: cats.map((c) => ({ value: c, label: c })) }),
