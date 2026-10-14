@@ -239,6 +239,7 @@ window.HUB_SITES = [
     desc: "The Teams recap of the October UX All Hands, with the recording and transcript. Catch up if you missed it.",
     url: "https://teams.microsoft.com/l/meetingrecap?driveId=b%21YbQOyKfE6k-Cli9_GrqZ7CDOY8YIK3hGrihczMyfPpghSHIgeMmwS7O0n8019guv&driveItemId=01QRFLPFMR2UB6OOQZWVCLRL3KXCJQ5V5V&sitePath=https%3A%2F%2Fniceonline-my.sharepoint.com%2F%3Av%3A%2Fg%2Fpersonal%2Fjohn_tucker_nice_com%2FIQCR1QPnOhm1RLivariTDte1AfgO-kNQwp4p5K9eXwN8lWo&fileUrl=https%3A%2F%2Fniceonline-my.sharepoint.com%2Fpersonal%2Fjohn_tucker_nice_com%2FDocuments%2FRecordings%2FUX+All+Hands-20261013_070106-Meeting+Recording.mp4%3Fweb%3D1&iCalUid=040000008200E00074C5B7101A82E00807EA0916F6F39BC257E2DC010000000000000000100000008FB8C128024C694192AD2BE5D9345A7A&masterICalUid=040000008200E00074C5B7101A82E00800000000F6F39BC257E2DC010000000000000000100000008FB8C128024C694192AD2BE5D9345A7A&threadId=19%3Ameeting_ZDZhZjdiM2QtMWRmOC00ODljLWI3ZDQtOGVhZjM3OWI1Yjg3%40thread.v2&organizerId=73db52b7-e97d-4a72-b020-ffa21916a9b6&tenantId=7123dabd-0e87-4da9-9cb9-b7ec82011aad&callId=8d2a3751-5a41-4640-8c46-d4918ba702a1&threadType=meeting&meetingType=Recurring&subType=RecapSharingLink_RecapCore&recapType=RecordingAndTranscript",
     category: "Events", tone: "coral", icon: "IconNiceSmile", access: "SSO",
-    tags: ["all-hands", "recording", "2026"]
+    tags: ["all-hands", "recording", "2026"],
+    owner: { name: "John Tucker", email: "John.Tucker@nice.com" }
   }
 ];
