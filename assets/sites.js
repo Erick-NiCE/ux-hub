@@ -79,7 +79,8 @@ window.HUB_SITES = [
     desc: "One Storybook with both Lyra and SOL components, used as the developer source of truth. NDS pulls from it so you can use these components without a GitHub account.",
     url: "https://na1.dev.nice-incontact.com/sol/?path=/docs/introduction--docs",
     category: "Design System", tone: "teal", icon: "IconCheck", access: "SSO",
-    tags: ["storybook", "lyra", "sol"]
+    tags: ["storybook", "lyra", "sol"],
+    owner: { name: "Ron Merrell", email: "Ron.Merrell@nice.com" }
   },
   {
     title: "Wings 2026 Session",
@@ -124,7 +125,8 @@ window.HUB_SITES = [
     desc: "The UX team's Jira board for the CXUX project: requests, work in progress and status.",
     url: "https://nice-ce-cxone-prod.atlassian.net/jira/software/c/projects/CXUX/boards/4130",
     category: "Community", tone: "coral", icon: "IconClipboard", access: "SSO",
-    tags: ["jira", "cxux", "board"]
+    tags: ["jira", "cxux", "board"],
+    owner: { name: "Simone Mimun", email: "Simone.Mimun@nice.com" }
   },
   {
     title: "UX Global (SharePoint)",
@@ -132,6 +134,7 @@ window.HUB_SITES = [
     desc: "The UX-Global SharePoint site: team news, files and resources.",
     url: "https://niceonlinena.sharepoint.com/sites/UX-Global/SitePages/Home.aspx",
     category: "Community", tone: "electric-blue", icon: "IconNiceSmile", access: "SSO",
-    tags: ["sharepoint", "team", "ux-global"]
+    tags: ["sharepoint", "team", "ux-global"],
+    owner: { name: "Megan Fisher", email: "Megan.Fisher@nice.com" }
   }
 ];
